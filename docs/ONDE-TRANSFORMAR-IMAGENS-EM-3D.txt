@@ -1,0 +1,21 @@
+Se você quer transformar as fotos do retentor em 3D, use uma destas rotas:
+
+1) MAIS RÁPIDA / IA
+- Meshy
+- Tripo AI
+- Rodin / Hyper3D
+- Luma AI (dependendo do fluxo disponível)
+
+2) MAIS CONTROLADA / TÉCNICA
+- Blender (modelagem manual ou ajuste fino)
+- Fusion 360 / SolidWorks (se alguém tiver medidas técnicas e quiser modelar com mais precisão)
+
+3) MELHOR FLUXO PARA ESTE PROJETO
+- Gerar primeira base em Meshy ou Tripo AI a partir das imagens.
+- Abrir no Blender para corrigir proporções, furos, bordas e detalhes.
+- Exportar em .glb para Android/web.
+- Exportar em .usdz para iPhone/iPad.
+
+OBSERVAÇÃO IMPORTANTE
+- Não use o Firebase Realtime Database para guardar o arquivo 3D binário.
+- O ideal neste MVP é colocar os arquivos .glb, .usdz, .jpg e .mp4 dentro do próprio repositório GitHub em /assets/ e usar o Firebase RTDB apenas para guardar os METADADOS e as URLs/caminhos.

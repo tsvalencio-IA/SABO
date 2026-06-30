@@ -1,0 +1,61 @@
+window.SAMPLE_DATA = {
+  config: {
+    siteName: 'Sabó AR Técnico',
+    veo3: {
+      guide: 'Use a sequência de prompts da pasta /prompts para produzir vídeos em blocos de 8 segundos no VEO3.'
+    }
+  },
+  produtos: {
+    '05801': {
+      codigo: '05801',
+      slug: 'retentor-virabrequim-traseiro-volante-sabo-05801-ioss',
+      marca: 'Sabó',
+      nome: 'Retentor do virabrequim traseiro volante Sabó 05801 IOSS',
+      subtitulo: 'Manual técnico interativo com AR para mecânicos',
+      heroImage: './assets/imagens/produto-05801-capa.jpg',
+      galeria: [
+        './assets/imagens/produto-05801-capa.jpg',
+        './assets/imagens/produto-05801-frontal.jpg',
+        './assets/imagens/produto-05801-angulo.jpg'
+      ],
+      modelGlbUrl: './assets/modelos/sabo-05801.glb',
+      modelUsdzUrl: '',
+      posterImage: './assets/imagens/produto-05801-frontal.jpg',
+      videoUrl: '',
+      alerta: 'ATENÇÃO: a luva plástica não é embalagem. Ela é o guia de instalação e deve permanecer até o final da montagem.',
+      descricaoCurta: 'Retentor traseiro do virabrequim, lado volante, diâmetro do eixo 85,00 mm, material PTFE, posição traseira, tipo IOSS.',
+      descricaoLonga: 'Esse retentor serve apenas para o sensor quadrado e leitura da roda fônica dentada. O objetivo desta página é ensinar a instalação de forma rápida, visual e chamativa, inclusive em realidade aumentada.',
+      tecnicas: {
+        diametroEixo: '85,00 mm',
+        incluiSensor: 'Não',
+        lado: 'Volante',
+        material: 'PTFE',
+        posicao: 'Traseiro',
+        sentidoRotacao: 'Anti-horário',
+        tipoRetentor: 'IOSS',
+        tipoVeiculo: 'Carro/Caminhonete'
+      },
+      aplicacoesResumo: ['Volkswagen Fox','Volkswagen Gol','Volkswagen Golf','Volkswagen Kombi','Volkswagen Polo','Volkswagen Saveiro','Volkswagen SpaceCross','Volkswagen SpaceFox','Volkswagen Voyage'],
+      aplicacoesDetalhadasTexto: 'Consulte a lista completa no catálogo oficial da fabricante. As capturas fornecidas citam aplicações em linhas Fox, Gol, Saveiro, SpaceFox e Voyage em diversas motorizações EA111, conforme ano e versão.',
+      passos: [
+        { titulo: '1. Conferir aplicação', descricao: 'Confirme o código 05801, o motor, o lado volante e a compatibilidade com o veículo antes de iniciar.' },
+        { titulo: '2. Não remover a luva plástica', descricao: 'A luva funciona como guia de montagem. Não a retire antes da instalação.' },
+        { titulo: '3. Preparar alojamento e eixo', descricao: 'Limpe a região, remova resíduos e confirme que não há rebarbas que possam ferir o lábio do retentor.' },
+        { titulo: '4. Posicionar corretamente', descricao: 'Alinhe o retentor ao alojamento e mantenha a luva centralizando o contato com o eixo.' },
+        { titulo: '5. Prensar com ferramenta plana', descricao: 'Use ferramenta adequada, aplicando força uniforme, sem torta, até o assentamento completo.' },
+        { titulo: '6. Finalizar e conferir', descricao: 'Ao final, a luva sai naturalmente. Faça a verificação visual e confirme que o retentor assentou por igual.' }
+      ],
+      errosComuns: [
+        'Retirar a luva antes da hora.',
+        'Montar torto ou usando impacto desigual.',
+        'Danificar o lábio de PTFE durante a passagem no eixo.',
+        'Ignorar a aplicação correta do sensor/roda fônica.'
+      ],
+      faq: [
+        { pergunta: 'Posso retirar a luva antes de montar?', resposta: 'Não. A luva é o guia da instalação. Se retirar antes, o lábio pode dobrar ou sofrer dano e gerar vazamento.' },
+        { pergunta: 'Precisa de sensor junto?', resposta: 'Não. Pelas informações enviadas, este item não inclui sensor.' },
+        { pergunta: 'Qual o principal risco de erro?', resposta: 'Dano ao lábio de vedação e consequente vazamento de óleo após a instalação.' }
+      ]
+    }
+  }
+};

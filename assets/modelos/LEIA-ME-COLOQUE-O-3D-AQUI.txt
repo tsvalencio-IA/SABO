@@ -1,0 +1,7 @@
+COLOQUE AQUI OS ARQUIVOS 3D FINAIS:
+- sabo-05801.glb
+- sabo-05801.usdz
+
+Depois, atualize o cadastro do produto ou o arquivo sample-data.js:
+- modelGlbUrl: ./assets/modelos/sabo-05801.glb
+- modelUsdzUrl: ./assets/modelos/sabo-05801.usdz

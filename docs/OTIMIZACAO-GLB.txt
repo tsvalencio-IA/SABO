@@ -1,0 +1,38 @@
+ARQUIVO RECEBIDO
+- bearing housing 3d model.glb
+- tamanho original aproximado: 56 MB
+
+ARQUIVO OTIMIZADO GERADO
+- assets/modelos/sabo-05801.glb
+- tamanho otimizado aproximado: 3,8 MB
+
+O QUE FOI FEITO
+1. Simplificação de malha
+   - redução forte de vértices, preservando boa aparência para uso web/AR.
+2. Compressão de geometria
+   - meshopt / quantização.
+3. Redução de textura
+   - de 4096x4096 para 1024x1024.
+4. Conversão de textura
+   - JPEG para WebP.
+
+COMANDO USADO
+/mnt/data/node_modules/.bin/gltf-transform optimize \
+  '/mnt/data/bearing housing 3d model.glb' \
+  '/mnt/data/glbopt/sabo-05801-optimized.glb' \
+  --compress meshopt \
+  --texture-compress webp \
+  --texture-size 1024 \
+  --simplify true \
+  --simplify-ratio 0.35 \
+  -v
+
+SE QUISER DEIXAR AINDA MAIS LEVE
+- Use texture-size 512
+- Use simplify-ratio 0.20 a 0.30
+- Remova textura normal se não fizer tanta diferença visual
+- Gere uma versão ULTRA para internet ruim e uma versão PADRÃO para visual melhor
+
+RECOMENDAÇÃO PRÁTICA
+- Para apresentação comercial e demo no celular: 2 MB a 6 MB é excelente.
+- Para catálogos maiores com muitos produtos: tente ficar entre 1 MB e 4 MB por peça.

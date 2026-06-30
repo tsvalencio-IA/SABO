@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assistente • Sabó AR Técnico</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body class="page-assistente">
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="branding">
+        <div class="brand-logo">AI</div>
+        <div class="brand-title">
+          <strong>Assistente de Instalação</strong>
+          <span>Resposta rápida em linguagem de oficina</span>
+        </div>
+      </div>
+      <nav class="header-nav">
+        <a href="./index.html">Início</a>
+        <a href="./produto.html?codigo=05801">Produto</a>
+        <a href="./ar.html?codigo=05801">AR</a>
+              <a href="./pitch-fabrica.html">Pitch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div class="container">
+      <section class="hero-card">
+        <div>
+          <div class="hero-kicker">🧰 Tira-dúvidas técnico</div>
+          <h1 id="assistenteTitulo">Retentor</h1>
+          <p id="assistenteAlerta"></p>
+        </div>
+      </section>
+
+      <section class="section grid-2">
+        <article class="card">
+          <h2 class="section-title">Pergunte em linguagem simples</h2>
+          <form id="askForm">
+            <label class="label" for="userQuestion">Exemplo: “posso tirar a luva?”, “o que causa vazamento?”, “qual ferramenta usar?”</label>
+            <textarea id="userQuestion" rows="5" placeholder="Digite sua dúvida"></textarea>
+            <div class="cta-row">
+              <button class="primary-btn" type="submit">Responder</button>
+            </div>
+          </form>
+          <div class="card" style="margin-top:14px;">
+            <h3 style="margin-top:0;">Resposta</h3>
+            <p id="assistantAnswer">A resposta aparecerá aqui.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2 class="section-title">Perguntas frequentes</h2>
+          <div id="assistenteFaq"></div>
+        </article>
+      </section>
+
+      <footer class="footer">Powered by thIAguinho Soluções Digitais</footer>
+    </div>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="./firebase-config.js"></script>
+  <script src="./assets/js/sample-data.js"></script>
+  <script src="./assets/js/firebase-data.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>

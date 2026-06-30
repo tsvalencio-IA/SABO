@@ -1,0 +1,19 @@
+{
+  "rules": {
+    "config": {
+      ".read": true,
+      ".write": false
+    },
+    "produtos": {
+      ".read": true,
+      "$codigo": {
+        ".write": "newData.exists() && newData.child('codigo').val() === $codigo",
+        ".validate": "newData.hasChildren(['codigo','marca','nome'])"
+      }
+    },
+    "analytics": {
+      ".read": false,
+      ".write": true
+    }
+  }
+}

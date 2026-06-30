@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sabó AR Técnico • V2</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="branding">
+        <div class="brand-logo">AR</div>
+        <div class="brand-title">
+          <strong>Sabó AR Técnico</strong>
+          <span>Manual vivo para mecânicos • versão 2</span>
+        </div>
+      </div>
+      <nav class="header-nav">
+        <a href="./produto.html?codigo=05801">Produto</a>
+        <a href="./ar.html?codigo=05801">AR</a>
+        <a href="./assistente.html?codigo=05801">Assistente</a>
+        <a href="./roteiros-veo3.html">Roteiros VEO3</a>
+        <a href="./cadastro.html">Cadastro</a>
+        <a href="./pitch-fabrica.html">Pitch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div class="container">
+      <section class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-kicker">🚀 VERSÃO 2 • demo comercial + AR + vídeo em sequência + GLB otimizado</div>
+            <h1>Escaneou o código.<br>Abriu o retentor em 3D.<br>Instalou certo.</h1>
+            <p>Esta versão 2 já está pronta para demonstração comercial. Ela mostra o produto, o modo AR, o assistente técnico, a estratégia de vídeos curtos e já vem com um GLB otimizado para testes no celular.</p>
+            <div class="cta-row">
+              <a class="primary-btn" id="quickProdutoLink" href="./produto.html?codigo=05801">Abrir produto 05801</a>
+              <a class="secondary-btn" id="quickArLink" href="./ar.html?codigo=05801">Ver modo AR</a>
+            </div>
+            <div class="section">
+              <form id="quickOpenForm" class="quick-form">
+                <input class="input-stretch" id="quickCodigo" type="text" placeholder="Digite o código da peça (ex.: 05801)" value="05801">
+                <button class="primary-btn" type="submit">Abrir página do produto</button>
+              </form>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <img src="./assets/imagens/produto-05801-capa.jpg" alt="Retentor 05801">
+          </div>
+        </div>
+      </section>
+
+      <section class="section grid-3">
+        <article class="card center">
+          <div class="highlight-number">1</div>
+          <h2 class="section-title">Página técnica</h2>
+          <p>Mostra aplicação, alerta, passo a passo, FAQ e CTA para AR.</p>
+        </article>
+        <article class="card center">
+          <div class="highlight-number">2</div>
+          <h2 class="section-title">Realidade aumentada</h2>
+          <p>Ao colocar o GLB/USDZ, a peça abre em 3D e pode ser vista na bancada ou na mão do usuário.</p>
+        </article>
+        <article class="card center">
+          <div class="highlight-number">3</div>
+          <h2 class="section-title">Vídeos em blocos</h2>
+          <p>Sequência pronta de prompts para o VEO3 gerar vários trechos de 8 segundos com continuidade.</p>
+        </article>
+      </section>
+
+      <section class="section grid-2">
+        <article class="card alert-strip">
+          <h2 class="section-title">Dados</h2>
+          <p id="dataSourceBadge" class="badge-pill">Dados: modo local/sample</p>
+          <p>Sem login. Se o Firebase estiver configurado, a página lê os dados do Realtime Database. Se não estiver, usa os dados de exemplo já embutidos no projeto.</p>
+        </article>
+        <article class="card">
+          <h2 class="section-title">Arquivos que você só vai substituir depois</h2>
+          <ul class="list-clean">
+            <li><code>/assets/modelos/sabo-05801.glb</code> → quando tiver o 3D</li>
+            <li><code>/assets/modelos/sabo-05801.usdz</code> → para iPhone/iPad</li>
+            <li><code>/assets/imagens/...</code> → imagens finais sem interface da loja</li>
+            <li><code>/assets/videos/...</code> → vídeos finais ou reels gerados</li>
+          </ul>
+        </article>
+      </section>
+
+      <footer class="footer">Powered by thIAguinho Soluções Digitais</footer>
+    </div>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="./firebase-config.js"></script>
+  <script src="./assets/js/sample-data.js"></script>
+  <script src="./assets/js/firebase-data.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>
