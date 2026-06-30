@@ -1,147 +1,164 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Manual Técnico AR • Retentor 05801</title>
-  <meta name="description" content="Demonstração de manual técnico interativo em 3D e realidade aumentada para instalação de retentor automotivo.">
-  <meta name="theme-color" content="#b10012">
-  <link rel="manifest" href="./manifest.webmanifest">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sabó AR Técnico • 05801 IOSS</title>
+  <meta name="theme-color" content="#c91923">
   <link rel="stylesheet" href="./assets/css/style.css">
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
-<header class="header">
-  <div class="container header-inner">
-    <a class="brand" href="./index.html" aria-label="Início">
-      <div class="brand-mark">AR</div>
-      <div class="brand-title"><strong>Manual Técnico AR</strong><span>3D • Realidade Aumentada • Treinamento rápido</span></div>
-    </a>
-    <nav class="nav" aria-label="Navegação">
-      <a href="#demo3d">3D / AR</a>
-      <a href="#metodo">Aplicação</a>
-      <a href="#videos">Vídeos</a>
-      <a href="#contato">Contato</a>
-    </nav>
-  </div>
-</header>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark">AR</div>
+        <div class="brand-title">
+          <strong>Sabó AR Técnico</strong>
+          <span>Apresentação interativa do produto</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#inicio">Início</a>
+        <a href="#viewer3d">Peça em 3D</a>
+        <a href="#training">Treinamento rápido</a>
+        <a href="#aplicacoes">Aplicações</a>
+        <a href="#galeria">Galeria</a>
+      </nav>
+    </div>
+  </header>
 
-<main>
-  <section class="hero">
-    <div class="container">
-      <div class="hero-card">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <span class="kicker">DEMONSTRAÇÃO EXECUTIVA</span>
-            <h1>Manual técnico que o mecânico realmente usa.</h1>
-            <p>Uma experiência direta no celular: peça em 3D, visualização em realidade aumentada, vídeo curto e orientação prática no momento da instalação.</p>
-            <div class="cta">
-              <button class="btn btn-yellow" id="view3dBtn" type="button">Ver peça em 3D</button>
-              <button class="btn btn-primary" id="openArBtn" type="button">Abrir AR no celular</button>
-              <button class="btn btn-ghost" id="shareBtn" type="button">Compartilhar demo</button>
+  <main>
+    <section class="section hero" id="inicio">
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-grid">
+            <div>
+              <div class="kicker">Retentor do Virabrequim • Código <span id="productCode"></span></div>
+              <h1 id="heroTitle"></h1>
+              <p id="heroSubtitle"></p>
+              <div class="cta-row">
+                <button class="btn btn-primary" data-scroll="viewer3d">Peça em 3D</button>
+                <button class="btn btn-secondary" id="btnOpenAr">Abrir em AR</button>
+                <button class="btn btn-light" id="btnTraining">Treinamento rápido</button>
+                <button class="btn btn-light" data-scroll="aplicacoes">Aplicações</button>
+              </div>
             </div>
-            <p class="small-note">Demonstração aplicada ao retentor traseiro do virabrequim 05801 IOSS com luva guia de instalação.</p>
-          </div>
-          <div class="hero-viewer" id="demo3d">
-            <div class="viewer-wrap">
-              <span class="viewer-badge">Retentor 05801 • 3D interativo</span>
-              <model-viewer id="viewer3d"
-                src="./assets/modelos/sabo-05801.glb"
-                poster="./assets/imagens/retentor-frontal.jpg"
-                ar
-                ar-modes="scene-viewer webxr quick-look"
-                camera-controls
-                auto-rotate
-                shadow-intensity="1"
-                exposure="1"
-                touch-action="pan-y"
-                alt="Modelo 3D do retentor">
-                <button class="ar-slot-button" slot="ar-button">Ver no ambiente</button>
-              </model-viewer>
+            <div class="hero-visual">
+              <img id="heroImage" src="" alt="Produto Sabó 05801">
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="section" id="metodo">
-    <div class="container grid-3">
-      <article class="card highlight"><div class="num">1</div><h2>Escaneia</h2><p>O código da peça leva o mecânico direto para a experiência técnica correta.</p></article>
-      <article class="card highlight"><div class="num">2</div><h2>Visualiza</h2><p>O componente aparece em 3D e pode ser visto sobre a bancada ou no ambiente da oficina.</p></article>
-      <article class="card highlight"><div class="num">3</div><h2>Instala certo</h2><p>A instrução foca no ponto crítico: a luva plástica é guia de montagem, não embalagem.</p></article>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container split">
-      <div class="card">
-        <h2>Retentor 05801 IOSS</h2>
-        <p>Aplicação demonstrativa para instalação com luva plástica de montagem, lado volante, eixo 85 mm, material PTFE e orientação técnica em linguagem visual.</p>
-        <div class="chips">
-          <span class="chip">Peça em 3D</span>
-          <span class="chip">AR no celular</span>
-          <span class="chip">Passo crítico destacado</span>
-          <span class="chip">Treinamento rápido</span>
+        <div class="quick-stats">
+          <div class="stat">
+            <strong>Visualização 3D</strong>
+            <span>Exploração do componente com rotação livre, zoom e leitura visual do conjunto.</span>
+          </div>
+          <div class="stat">
+            <strong>AR no celular</strong>
+            <span>Experiência imersiva para observar o componente em realidade aumentada.</span>
+          </div>
+          <div class="stat">
+            <strong>Treinamento rápido</strong>
+            <span>Experiência objetiva para apoiar entendimento do processo de montagem.</span>
+          </div>
+          <div class="stat">
+            <strong id="appsCount"></strong>
+            <span>Aplicações automotivas de ampla utilização dentro da família EA111.</span>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <img class="product-img" src="./assets/imagens/retentor-capa.jpg" onerror="this.src='./assets/imagens/retentor-placeholder.svg'" alt="Retentor automotivo">
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="videos">
-    <div class="container">
-      <div class="card">
-        <h2>Sequência de vídeo técnico curto</h2>
-        <p>Conteúdo pensado para prender atenção, mostrar o erro comum e reforçar a instalação correta no tempo real da oficina.</p>
-        <div class="video-grid">
-          <div class="video-card"><video src="./assets/videos/clip-01.mp4" controls playsinline preload="metadata"></video><div class="video-fallback"><strong>1 • Erro comum</strong><span>Impacto inicial e retenção de atenção.</span></div></div>
-          <div class="video-card"><video src="./assets/videos/clip-02.mp4" controls playsinline preload="metadata"></video><div class="video-fallback"><strong>2 • Peça em corte</strong><span>Luva guia, lábio e eixo em destaque.</span></div></div>
-          <div class="video-card"><video src="./assets/videos/clip-03.mp4" controls playsinline preload="metadata"></video><div class="video-fallback"><strong>3 • Montagem correta</strong><span>Alinhamento e assentamento uniforme.</span></div></div>
-          <div class="video-card"><video src="./assets/videos/clip-04.mp4" controls playsinline preload="metadata"></video><div class="video-fallback"><strong>4 • Fechamento</strong><span>Erro x acerto e chamada para AR.</span></div></div>
+    <section class="section" id="viewer3d">
+      <div class="container grid-2">
+        <div class="card">
+          <span class="eyebrow">Peça em 3D</span>
+          <h2 id="viewerSectionTitle"></h2>
+          <div class="viewer-shell" id="viewerMount"></div>
+        </div>
+        <div class="card feature">
+          <span class="eyebrow">Apresentação interativa</span>
+          <h2>Exploração visual do componente</h2>
+          <p>Uma forma direta e moderna de apresentar o produto, unindo visualização técnica, experiência em celular e navegação intuitiva.</p>
+          <div class="spec-list" id="specsWrap"></div>
+          <div class="cta-row">
+            <button class="btn btn-primary" id="btnTraining2">Treinamento rápido</button>
+            <button class="btn btn-secondary" data-scroll="galeria">Ver galeria</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="training">
+      <div class="container">
+        <div class="card">
+          <span class="eyebrow">Treinamento rápido</span>
+          <h2>Resumo visual do processo</h2>
+          <div class="grid-3 training-steps" id="trainingCards"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="aplicacoes">
+      <div class="container grid-2">
+        <div class="card">
+          <span class="eyebrow">Aplicações</span>
+          <h2>Linhas de veículos compatíveis</h2>
+          <div class="app-chips" id="appsWrap"></div>
+        </div>
+        <div class="card feature">
+          <span class="eyebrow">Posicionamento</span>
+          <h2>Apresentação direta para decisão comercial</h2>
+          <p>O projeto foi estruturado para exibir o componente de forma elegante, responsiva e orientada à experiência em celular, favorecendo demonstrações comerciais e institucionais.</p>
+          <p class="note">Interface limpa, navegação curta e foco total no produto, no 3D e na experiência de treinamento.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="galeria">
+      <div class="container">
+        <div class="card">
+          <span class="eyebrow">Galeria</span>
+          <h2>Imagens de apoio do produto</h2>
+          <div class="gallery-main"><img id="mainGalleryImage" src="" alt="Galeria do produto"></div>
+          <div class="thumb-grid" id="thumbGrid"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Powered by thIAguinho Soluções Digitais</div>
+  </footer>
+
+  <div class="modal" id="trainingModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-top">
+        <div>
+          <span class="eyebrow">Treinamento rápido</span>
+          <h2 style="margin:0">Visão objetiva do componente</h2>
+        </div>
+        <button class="modal-close" id="closeTraining" aria-label="Fechar">×</button>
+      </div>
+      <div class="slide-shell">
+        <img id="slideImage" src="" alt="Slide do treinamento">
+        <div>
+          <div class="slide-badges"><span class="slide-badge" id="slideBadge"></span></div>
+          <h3 id="slideTitle"></h3>
+          <p id="slideText" class="note" style="font-size:1.02rem;line-height:1.6"></p>
+          <div class="progress-dots" id="slideDots"></div>
+          <div class="slide-nav">
+            <button class="btn btn-light" id="prevSlide">Anterior</button>
+            <button class="btn btn-primary" id="nextSlide">Próximo</button>
+          </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <section class="section" id="contato">
-    <div class="container grid-2">
-      <article class="card">
-        <h2>Impacto esperado</h2>
-        <p>Menos erro de aplicação, menos dúvida repetitiva, mais padronização técnica e mais valor percebido na marca.</p>
-        <div class="chips"><span class="chip">Suporte técnico escalável</span><span class="chip">Treinamento visual</span><span class="chip">Experiência de marca</span></div>
-      </article>
-      <article class="card">
-        <h2>Solicitar apresentação</h2>
-        <form id="leadForm" class="lead-form">
-          <div class="field"><label>Nome</label><input name="nome" placeholder="Seu nome"></div>
-          <div class="field"><label>Empresa</label><input name="empresa" placeholder="Empresa"></div>
-          <div class="field full"><label>Contato</label><input name="contato" placeholder="Telefone ou e-mail"></div>
-          <div class="field full"><label>Mensagem</label><textarea name="mensagem" rows="3" placeholder="Quero ver uma apresentação técnica."></textarea></div>
-          <button class="btn btn-primary full" type="submit">Enviar solicitação</button>
-        </form>
-        <p class="status" id="leadStatus"></p>
-      </article>
-    </div>
-  </section>
-</main>
-
-<div class="mobile-bar">
-  <div class="mobile-bar-inner">
-    <button class="btn btn-yellow" type="button" onclick="document.getElementById('demo3d').scrollIntoView({behavior:'smooth'})">3D</button>
-    <button class="btn btn-primary" type="button" onclick="document.getElementById('openArBtn').click()">AR</button>
   </div>
-</div>
 
-<footer class="footer">
-  <div class="container discrete">Proposta e tecnologia: thIAguinho Soluções Digitais</div>
-</footer>
-
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-<script src="./firebase-config.js"></script>
-<script src="./assets/js/app.js"></script>
+  <script src="./assets/js/site-data.js"></script>
+  <script src="./assets/js/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+PASTA INTERNA - NÃO PUBLICAR SE NÃO QUISER.
+
+Esta versão pública não expõe Firebase na interface.
+Se quiser usar RTDB depois, mantenha as regras abertas apenas para teste:
+{
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+
+Os vídeos futuros podem ser colocados em /assets/videos/ e integrados depois.
