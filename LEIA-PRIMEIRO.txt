@@ -1,0 +1,6 @@
+SUBIR NO GITHUB PAGES:
+- Suba todos os arquivos desta pasta na raiz do repositório.
+- O arquivo index.html deve ficar na raiz.
+- As páginas antigas foram substituídas por redirecionamentos limpos para não aparecer conteúdo técnico.
+- O 3D está em assets/modelos/sabo-05801.glb.
+- As regras abertas de teste estão em database-rules.json.

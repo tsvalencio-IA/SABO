@@ -1,64 +1,44 @@
 window.SITE_DATA = {
-  product: {
-    code: '05801 IOSS',
-    title: 'Retentor do Virabrequim Traseiro',
-    subtitle: 'Experiência interativa em 3D e realidade aumentada para treinamento de instalação.',
-    brand: 'Sabó',
-    heroImage: './assets/images/hero-package.webp',
+  produto: {
+    codigo: '05801 IOSS',
+    marca: 'Sabó',
+    titulo: 'Retentor do Virabrequim Traseiro',
+    chamada: 'Treinamento técnico interativo com peça em 3D, realidade aumentada e visualização rápida pelo celular.',
+    modelo: './assets/modelos/sabo-05801.glb',
     poster: './assets/images/front-clean.jpg',
-    modelGlb: './assets/modelos/sabo-05801.glb',
-    gallery: [
+    destaque: './assets/images/hero-package.webp',
+    galeria: [
       './assets/images/hero-package.webp',
       './assets/images/front-package.webp',
       './assets/images/angle-logo.jpg',
       './assets/images/front-clean.jpg',
       './assets/images/back-sticker.jpg',
-      './assets/images/top-angle.jpg'
+      './assets/images/top-angle.jpg',
+      './assets/images/angle-clean.jpg',
+      './assets/images/front-small.jpg'
     ],
-    applications: [
-      'Volkswagen Fox',
-      'Volkswagen Gol',
-      'Volkswagen Golf',
-      'Volkswagen Kombi',
-      'Volkswagen Polo',
-      'Volkswagen Saveiro',
-      'Volkswagen SpaceCross',
-      'Volkswagen SpaceFox',
-      'Volkswagen Voyage'
+    aplicacoes: [
+      'Volkswagen Fox', 'Volkswagen Gol', 'Volkswagen Golf', 'Volkswagen Kombi',
+      'Volkswagen Polo', 'Volkswagen Saveiro', 'Volkswagen SpaceCross',
+      'Volkswagen SpaceFox', 'Volkswagen Voyage'
     ],
-    specs: [
-      'Diâmetro do eixo: 85 mm',
-      'Posição: traseiro',
-      'Lado: volante',
-      'Material: PTFE',
-      'Tipo: IOSS',
-      'Aplicação automotiva leve'
-    ]
+    pontos: [
+      {titulo:'Peça em 3D', texto:'Modelo interativo com rotação livre, zoom e leitura visual do componente.'},
+      {titulo:'AR no celular', texto:'Experiência em realidade aumentada para visualizar a peça em escala no ambiente.'},
+      {titulo:'Treinamento rápido', texto:'Conteúdo direto, visual e objetivo para apoio ao processo de instalação.'},
+      {titulo:'Catálogo inteligente', texto:'Aplicação, visualização e orientação reunidas em uma experiência única.'}
+    ],
+    especificacoes: ['Eixo 85 mm', 'Traseiro', 'Lado volante', 'PTFE', 'IOSS', 'Sem sensor incluso']
   },
-  trainingSlides: [
-    {
-      title: 'Atenção ao processo',
-      image: './assets/images/back-sticker.jpg',
-      badge: 'Etapa 1',
-      text: 'A luva de montagem faz parte do processo e conduz a instalação com segurança e precisão.'
-    },
-    {
-      title: 'Posicionamento correto',
-      image: './assets/images/front-clean.jpg',
-      badge: 'Etapa 2',
-      text: 'O retentor deve ser alinhado corretamente para garantir assentamento uniforme no conjunto.'
-    },
-    {
-      title: 'Visualização do componente',
-      image: './assets/images/angle-logo.jpg',
-      badge: 'Etapa 3',
-      text: 'A visualização 3D permite explorar geometria, orientação e detalhes construtivos do produto.'
-    },
-    {
-      title: 'Treinamento objetivo',
-      image: './assets/images/top-angle.jpg',
-      badge: 'Etapa 4',
-      text: 'O formato curto acelera compreensão e padroniza a experiência de treinamento no celular.'
-    }
+  treinamento: [
+    {titulo:'Identifique o componente', subtitulo:'Visualização inicial', imagem:'./assets/images/front-package.webp', texto:'Reconhecimento visual rápido da peça, embalagem e código de aplicação.'},
+    {titulo:'Explore em 3D', subtitulo:'Peça interativa', imagem:'./assets/images/angle-logo.jpg', texto:'A peça pode ser girada, aproximada e observada em diferentes ângulos.'},
+    {titulo:'Veja em AR', subtitulo:'Celular em campo', imagem:'./assets/images/front-clean.jpg', texto:'A realidade aumentada leva a peça para a bancada, mão ou ambiente de trabalho.'},
+    {titulo:'Treine com vídeo curto', subtitulo:'Processo objetivo', imagem:'./assets/images/back-sticker.jpg', texto:'Clipes rápidos podem complementar o fluxo para melhorar retenção e padronização.'}
+  ],
+  videos: [
+    {titulo:'Treinamento rápido 1', arquivo:'./assets/videos/clip-01.mp4'},
+    {titulo:'Treinamento rápido 2', arquivo:'./assets/videos/clip-02.mp4'},
+    {titulo:'Treinamento rápido 3', arquivo:'./assets/videos/clip-03.mp4'}
   ]
 };

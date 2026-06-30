@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Sabó AR Técnico • 05801 IOSS</title>
-  <meta name="theme-color" content="#c91923">
+  <meta name="theme-color" content="#c71923">
+  <link rel="manifest" href="./manifest.webmanifest">
   <link rel="stylesheet" href="./assets/css/style.css">
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
@@ -13,15 +14,12 @@
     <div class="container header-inner">
       <div class="brand">
         <div class="brand-mark">AR</div>
-        <div class="brand-title">
-          <strong>Sabó AR Técnico</strong>
-          <span>Apresentação interativa do produto</span>
-        </div>
+        <div class="brand-title"><strong>Sabó AR Técnico</strong><span>Experiência interativa do produto</span></div>
       </div>
       <nav class="nav">
         <a href="#inicio">Início</a>
-        <a href="#viewer3d">Peça em 3D</a>
-        <a href="#training">Treinamento rápido</a>
+        <a href="#peca3d">Peça em 3D</a>
+        <a href="#treinamento">Treinamento rápido</a>
         <a href="#aplicacoes">Aplicações</a>
         <a href="#galeria">Galeria</a>
       </nav>
@@ -34,130 +32,94 @@
         <div class="hero-card">
           <div class="hero-grid">
             <div>
-              <div class="kicker">Retentor do Virabrequim • Código <span id="productCode"></span></div>
-              <h1 id="heroTitle"></h1>
-              <p id="heroSubtitle"></p>
-              <div class="cta-row">
-                <button class="btn btn-primary" data-scroll="viewer3d">Peça em 3D</button>
-                <button class="btn btn-secondary" id="btnOpenAr">Abrir em AR</button>
-                <button class="btn btn-light" id="btnTraining">Treinamento rápido</button>
-                <button class="btn btn-light" data-scroll="aplicacoes">Aplicações</button>
+              <div class="kicker">Retentor do Virabrequim • Código <span id="codigoProduto"></span></div>
+              <h1 id="tituloHero"></h1>
+              <p id="chamadaHero"></p>
+              <div class="actions">
+                <button class="btn btn-primary" data-go="peca3d">Peça em 3D</button>
+                <button class="btn btn-accent" id="btnArHero">Abrir em AR</button>
+                <button class="btn btn-white" id="btnTreinoHero">Treinamento rápido</button>
+                <button class="btn btn-white" data-go="aplicacoes">Aplicações</button>
               </div>
             </div>
-            <div class="hero-visual">
-              <img id="heroImage" src="" alt="Produto Sabó 05801">
-            </div>
+            <div class="hero-visual"><img id="imagemHero" src="" alt="Retentor Sabó 05801"></div>
           </div>
         </div>
-
-        <div class="quick-stats">
-          <div class="stat">
-            <strong>Visualização 3D</strong>
-            <span>Exploração do componente com rotação livre, zoom e leitura visual do conjunto.</span>
-          </div>
-          <div class="stat">
-            <strong>AR no celular</strong>
-            <span>Experiência imersiva para observar o componente em realidade aumentada.</span>
-          </div>
-          <div class="stat">
-            <strong>Treinamento rápido</strong>
-            <span>Experiência objetiva para apoiar entendimento do processo de montagem.</span>
-          </div>
-          <div class="stat">
-            <strong id="appsCount"></strong>
-            <span>Aplicações automotivas de ampla utilização dentro da família EA111.</span>
-          </div>
-        </div>
+        <div class="metrics" id="pontosComerciais"></div>
       </div>
     </section>
 
-    <section class="section" id="viewer3d">
+    <section class="section" id="peca3d">
       <div class="container grid-2">
-        <div class="card">
+        <article class="card">
           <span class="eyebrow">Peça em 3D</span>
-          <h2 id="viewerSectionTitle"></h2>
+          <h2 id="tituloViewer"></h2>
           <div class="viewer-shell" id="viewerMount"></div>
-        </div>
-        <div class="card feature">
-          <span class="eyebrow">Apresentação interativa</span>
-          <h2>Exploração visual do componente</h2>
-          <p>Uma forma direta e moderna de apresentar o produto, unindo visualização técnica, experiência em celular e navegação intuitiva.</p>
-          <div class="spec-list" id="specsWrap"></div>
-          <div class="cta-row">
-            <button class="btn btn-primary" id="btnTraining2">Treinamento rápido</button>
-            <button class="btn btn-secondary" data-scroll="galeria">Ver galeria</button>
+          <div class="viewer-status" id="viewerStatus"></div>
+        </article>
+        <article class="card">
+          <span class="eyebrow">Experiência comercial</span>
+          <h2>Visualização técnica em poucos toques</h2>
+          <p class="feature-copy">A peça pode ser explorada em 3D, com rotação, zoom e visualização direta pelo celular. A experiência aproxima o produto da bancada, facilita a demonstração e valoriza o suporte técnico da marca.</p>
+          <div class="specs" id="listaSpecs"></div>
+          <div class="actions">
+            <button class="btn btn-primary" id="btnArViewer">Abrir em AR</button>
+            <button class="btn btn-accent" id="btnTreinoViewer">Treinamento rápido</button>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section class="section" id="training">
+    <section class="section" id="treinamento">
       <div class="container">
-        <div class="card">
+        <article class="card">
           <span class="eyebrow">Treinamento rápido</span>
           <h2>Resumo visual do processo</h2>
-          <div class="grid-3 training-steps" id="trainingCards"></div>
-        </div>
+          <div class="training-grid" id="cardsTreinamento"></div>
+          <div class="actions"><button class="btn btn-primary" id="btnPlayTreino">Assistir clipes</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="videos">
+      <div class="container">
+        <article class="card">
+          <span class="eyebrow">Clipes rápidos</span>
+          <h2>Treinamento em vídeo</h2>
+          <div class="video-grid" id="videosTreinamento"></div>
+        </article>
       </div>
     </section>
 
     <section class="section" id="aplicacoes">
       <div class="container grid-2">
-        <div class="card">
+        <article class="card">
           <span class="eyebrow">Aplicações</span>
-          <h2>Linhas de veículos compatíveis</h2>
-          <div class="app-chips" id="appsWrap"></div>
-        </div>
-        <div class="card feature">
-          <span class="eyebrow">Posicionamento</span>
-          <h2>Apresentação direta para decisão comercial</h2>
-          <p>O projeto foi estruturado para exibir o componente de forma elegante, responsiva e orientada à experiência em celular, favorecendo demonstrações comerciais e institucionais.</p>
-          <p class="note">Interface limpa, navegação curta e foco total no produto, no 3D e na experiência de treinamento.</p>
-        </div>
+          <h2><span id="contadorAplicacoes"></span> mapeadas</h2>
+          <div class="apps" id="listaAplicacoes"></div>
+        </article>
+        <article class="card">
+          <span class="eyebrow">Demonstração premium</span>
+          <h2>Do catálogo para a experiência</h2>
+          <p class="feature-copy">O produto deixa de ser apenas uma peça no catálogo e passa a ter uma camada visual de treinamento, apresentação e suporte no celular.</p>
+        </article>
       </div>
     </section>
 
     <section class="section" id="galeria">
       <div class="container">
-        <div class="card">
+        <article class="card">
           <span class="eyebrow">Galeria</span>
-          <h2>Imagens de apoio do produto</h2>
-          <div class="gallery-main"><img id="mainGalleryImage" src="" alt="Galeria do produto"></div>
-          <div class="thumb-grid" id="thumbGrid"></div>
-        </div>
+          <h2>Imagens do produto</h2>
+          <div class="gallery-main"><img id="imagemGaleriaPrincipal" src="" alt="Produto Sabó"></div>
+          <div class="thumbs" id="thumbsGaleria"></div>
+        </article>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">Powered by thIAguinho Soluções Digitais</div>
-  </footer>
-
-  <div class="modal" id="trainingModal" aria-hidden="true">
-    <div class="modal-card">
-      <div class="modal-top">
-        <div>
-          <span class="eyebrow">Treinamento rápido</span>
-          <h2 style="margin:0">Visão objetiva do componente</h2>
-        </div>
-        <button class="modal-close" id="closeTraining" aria-label="Fechar">×</button>
-      </div>
-      <div class="slide-shell">
-        <img id="slideImage" src="" alt="Slide do treinamento">
-        <div>
-          <div class="slide-badges"><span class="slide-badge" id="slideBadge"></span></div>
-          <h3 id="slideTitle"></h3>
-          <p id="slideText" class="note" style="font-size:1.02rem;line-height:1.6"></p>
-          <div class="progress-dots" id="slideDots"></div>
-          <div class="slide-nav">
-            <button class="btn btn-light" id="prevSlide">Anterior</button>
-            <button class="btn btn-primary" id="nextSlide">Próximo</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <footer class="footer"><div class="container">Powered by thIAguinho Soluções Digitais</div></footer>
+  <script src="./firebase-config.js"></script>
   <script src="./assets/js/site-data.js"></script>
   <script src="./assets/js/app.js"></script>
 </body>

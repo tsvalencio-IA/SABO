@@ -1,114 +1,143 @@
 (function(){
-  const data = window.SITE_DATA;
-  const $ = (sel,base=document)=>base.querySelector(sel);
-  const $$ = (sel,base=document)=>Array.from(base.querySelectorAll(sel));
+  'use strict';
+  const data = window.SITE_DATA || {};
+  const produto = data.produto || {};
+  const $ = (s, b=document) => b.querySelector(s);
+  const $$ = (s, b=document) => Array.from(b.querySelectorAll(s));
 
-  function fillText(){
-    $('#productCode').textContent = data.product.code;
-    $('#heroTitle').innerHTML = `${data.product.title} <span class="highlight">${data.product.code}</span>`;
-    $('#heroSubtitle').textContent = data.product.subtitle;
-    $('#heroImage').src = data.product.heroImage;
-    $('#viewerPosterImage').src = data.product.poster;
-    $('#viewerPosterImage').alt = data.product.title;
-    $('#mainGalleryImage').src = data.product.gallery[0];
-    $('#mainGalleryImage').alt = data.product.title;
-    $('#viewerSectionTitle').textContent = `${data.product.title} • ${data.product.code}`;
-    $('#appsCount').textContent = `${data.product.applications.length}+ aplicações`;
-    $('#specsWrap').innerHTML = data.product.specs.map(item => `<div class="spec-pill">${item}</div>`).join('');
-    $('#appsWrap').innerHTML = data.product.applications.map(item => `<span class="app-chip">${item}</span>`).join('');
+  function setText(sel, value){ const el=$(sel); if(el) el.textContent = value || ''; }
+  function setHTML(sel, value){ const el=$(sel); if(el) el.innerHTML = value || ''; }
+  function setSrc(sel, value, alt){ const el=$(sel); if(el && value){ el.src=value; if(alt) el.alt=alt; } }
+  function scrollToId(id){ const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth', block:'start'}); }
+
+  function renderIntro(){
+    setText('#codigoProduto', produto.codigo);
+    setHTML('#tituloHero', `${produto.titulo || ''} <span>${produto.codigo || ''}</span>`);
+    setText('#chamadaHero', produto.chamada);
+    setSrc('#imagemHero', produto.destaque, produto.titulo);
+    setText('#tituloViewer', `${produto.titulo || ''} • ${produto.codigo || ''}`);
+    setText('#contadorAplicacoes', `${(produto.aplicacoes || []).length}+ aplicações`);
+    setHTML('#pontosComerciais', (produto.pontos || []).map(p => `
+      <article class="metric-card">
+        <strong>${p.titulo}</strong>
+        <span>${p.texto}</span>
+      </article>
+    `).join(''));
+    setHTML('#listaSpecs', (produto.especificacoes || []).map(x => `<span>${x}</span>`).join(''));
+    setHTML('#listaAplicacoes', (produto.aplicacoes || []).map(x => `<span>${x}</span>`).join(''));
   }
 
-  function buildGallery(){
-    const thumbWrap = $('#thumbGrid');
-    thumbWrap.innerHTML = data.product.gallery.map((src,idx)=>`
-      <button type="button" class="thumb ${idx===0?'active':''}" data-src="${src}">
-        <img src="${src}" alt="Imagem ${idx+1}">
-      </button>
-    `).join('');
-    thumbWrap.addEventListener('click', (e)=>{
-      const btn = e.target.closest('.thumb');
-      if(!btn) return;
-      $$('.thumb', thumbWrap).forEach(x=>x.classList.remove('active'));
-      btn.classList.add('active');
-      $('#mainGalleryImage').src = btn.dataset.src;
-    });
-  }
-
-  function buildViewer(){
-    const shell = $('#viewerMount');
-    shell.innerHTML = `
-      <model-viewer id="productViewer"
-        src="${data.product.modelGlb}"
-        poster="${data.product.poster}"
+  function renderViewer(){
+    const mount = $('#viewerMount');
+    if(!mount) return;
+    mount.innerHTML = `
+      <model-viewer id="viewer3dModel"
+        src="${produto.modelo}"
+        poster="${produto.poster}"
+        alt="${produto.titulo} ${produto.codigo}"
         ar
-        ar-modes="webxr scene-viewer quick-look"
+        ar-modes="scene-viewer webxr quick-look"
+        ar-placement="floor"
+        ar-scale="fixed"
         camera-controls
         auto-rotate
+        auto-rotate-delay="900"
+        rotation-per-second="22deg"
+        camera-orbit="0deg 90deg 1.55m"
+        field-of-view="32deg"
+        min-field-of-view="18deg"
+        max-field-of-view="55deg"
         shadow-intensity="1"
-        exposure="1"
+        exposure="1.05"
+        reveal="auto"
+        loading="eager"
         interaction-prompt="auto">
-        <button slot="ar-button" class="btn btn-primary only-mobile">Abrir em AR</button>
+        <button slot="ar-button" class="ar-slot-button">Abrir em AR</button>
       </model-viewer>
     `;
-    const viewer = $('#productViewer');
-    $('#btnOpenAr').addEventListener('click', ()=>{
-      if(viewer && viewer.activateAR) viewer.activateAR();
-    });
-  }
 
-  function buildSlides(){
-    let current = 0;
-    const modal = $('#trainingModal');
-    const image = $('#slideImage');
-    const badge = $('#slideBadge');
-    const title = $('#slideTitle');
-    const text = $('#slideText');
-    const dots = $('#slideDots');
-    const cardsWrap = $('#trainingCards');
-
-    cardsWrap.innerHTML = data.trainingSlides.slice(0,3).map((slide,idx)=>`
-      <article class="card step-card">
-        <img src="${slide.image}" alt="${slide.title}">
-        <span class="eyebrow">${slide.badge}</span>
-        <h3>${slide.title}</h3>
-        <p>${slide.text}</p>
-      </article>
-    `).join('');
-
-    dots.innerHTML = data.trainingSlides.map((_,idx)=>`<span class="${idx===0?'active':''}"></span>`).join('');
-
-    function renderSlide(){
-      const slide = data.trainingSlides[current];
-      image.src = slide.image;
-      badge.textContent = slide.badge;
-      title.textContent = slide.title;
-      text.textContent = slide.text;
-      $$('#slideDots span').forEach((dot,idx)=>dot.classList.toggle('active', idx===current));
+    const viewer = $('#viewer3dModel');
+    const status = $('#viewerStatus');
+    if(viewer){
+      viewer.addEventListener('load', () => { if(status) status.textContent = '3D carregado'; });
+      viewer.addEventListener('error', () => { if(status) status.textContent = 'Não foi possível carregar a peça em 3D.'; });
     }
-    renderSlide();
-
-    $('#btnTraining').addEventListener('click', ()=>modal.classList.add('open'));
-    $('#btnTraining2').addEventListener('click', ()=>modal.classList.add('open'));
-    $('#closeTraining').addEventListener('click', ()=>modal.classList.remove('open'));
-    modal.addEventListener('click', (e)=>{ if(e.target === modal) modal.classList.remove('open'); });
-    $('#prevSlide').addEventListener('click', ()=>{ current = (current - 1 + data.trainingSlides.length) % data.trainingSlides.length; renderSlide(); });
-    $('#nextSlide').addEventListener('click', ()=>{ current = (current + 1) % data.trainingSlides.length; renderSlide(); });
   }
 
-  function bindScrollButtons(){
-    document.querySelectorAll('[data-scroll]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const target = document.getElementById(btn.dataset.scroll);
-        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+  function openAR(){
+    const viewer = $('#viewer3dModel');
+    scrollToId('peca3d');
+    setTimeout(() => {
+      try{
+        if(viewer && typeof viewer.activateAR === 'function') viewer.activateAR();
+      }catch(e){ console.warn(e); }
+    }, 450);
+  }
+
+  function renderTreinamento(){
+    const cards = $('#cardsTreinamento');
+    if(cards){
+      cards.innerHTML = (data.treinamento || []).map((item, idx) => `
+        <article class="training-card" data-slide="${idx}">
+          <img src="${item.imagem}" alt="${item.titulo}">
+          <div><small>${item.subtitulo}</small><strong>${item.titulo}</strong><p>${item.texto}</p></div>
+        </article>
+      `).join('');
+    }
+
+    const videos = $('#videosTreinamento');
+    if(videos){
+      videos.innerHTML = (data.videos || []).map(v => `
+        <article class="video-card">
+          <video controls playsinline preload="metadata">
+            <source src="${v.arquivo}" type="video/mp4">
+          </video>
+          <strong>${v.titulo}</strong>
+        </article>
+      `).join('');
+    }
+  }
+
+  function renderGaleria(){
+    const principal = $('#imagemGaleriaPrincipal');
+    const thumbs = $('#thumbsGaleria');
+    const imagens = produto.galeria || [];
+    if(principal && imagens[0]) principal.src = imagens[0];
+    if(thumbs){
+      thumbs.innerHTML = imagens.map((src, idx) => `
+        <button class="thumb ${idx===0?'active':''}" data-src="${src}" type="button"><img src="${src}" alt="Imagem ${idx+1}"></button>
+      `).join('');
+      thumbs.addEventListener('click', (e) => {
+        const btn = e.target.closest('.thumb');
+        if(!btn || !principal) return;
+        $$('.thumb', thumbs).forEach(x => x.classList.remove('active'));
+        btn.classList.add('active');
+        principal.src = btn.dataset.src;
       });
+    }
+  }
+
+  function bindClicks(){
+    $$('[data-go]').forEach(btn => btn.addEventListener('click', () => scrollToId(btn.dataset.go)));
+    const arBtns = ['#btnArHero','#btnArViewer'];
+    arBtns.forEach(sel => { const el=$(sel); if(el) el.addEventListener('click', openAR); });
+    const treino = $('#btnTreinoHero');
+    if(treino) treino.addEventListener('click', () => scrollToId('treinamento'));
+    const treino2 = $('#btnTreinoViewer');
+    if(treino2) treino2.addEventListener('click', () => scrollToId('treinamento'));
+    const playFirst = $('#btnPlayTreino');
+    if(playFirst) playFirst.addEventListener('click', () => {
+      scrollToId('videos');
+      const v = document.querySelector('#videos video');
+      if(v) setTimeout(()=>v.play().catch(()=>{}), 500);
     });
   }
 
-  document.addEventListener('DOMContentLoaded', ()=>{
-    fillText();
-    buildGallery();
-    buildViewer();
-    buildSlides();
-    bindScrollButtons();
+  document.addEventListener('DOMContentLoaded', () => {
+    renderIntro();
+    renderViewer();
+    renderTreinamento();
+    renderGaleria();
+    bindClicks();
   });
 })();
