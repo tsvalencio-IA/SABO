@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#101114"/>
+  <circle cx="600" cy="400" r="250" fill="none" stroke="#fff" stroke-width="80"/>
+  <circle cx="600" cy="400" r="340" fill="none" stroke="#c1121f" stroke-width="30"/>
+  <text x="600" y="745" font-family="Arial" font-size="56" fill="#fff" text-anchor="middle">Retentor 05801 • 3D/AR</text>
+</svg>
